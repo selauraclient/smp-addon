@@ -1,0 +1,18 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "",
+        "name": "Selaura SMP Addon (RP)",
+        "uuid": "379e6f82-6926-42a9-88b3-fcbdd5c44bdf",
+        "version": [1, 0, 0],
+        "min_engine_version": [ 1, 21, 0 ]
+    },
+    "modules": [
+        {
+            "description": "CHYVES",
+            "type": "resources",
+            "uuid": "69eddf16-8f01-4589-8c56-7ee6547608e5",
+            "version": [1, 0, 0]
+        }
+    ]
+}

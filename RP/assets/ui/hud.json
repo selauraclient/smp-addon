@@ -1,0 +1,231 @@
+{
+    "namespace": "selaura_hud",
+    "hud": {
+        "type": "panel",
+        "size": [
+            "100%",
+            "100%"
+        ],
+        "controls": [
+            {
+                "crosshair": {
+                    "type": "custom",
+                    "size": [
+                        16,
+                        16
+                    ],
+                    "renderer": "cursor_renderer",
+                    "layer": 4
+                }
+            },
+            {
+                "bottom_gui_elements@selaura_hud.bottom_gui_elements": {}
+            }
+        ]
+    },
+    "padding": {
+        "type": "panel",
+        "size": "$s",
+        "$s|default": [
+            0,
+            0
+        ]
+    },
+    "bottom_gui_elements": {
+        "type": "panel",
+        "anchor_from": "bottom_middle",
+        "anchor_to": "bottom_middle",
+        "size": [
+            180,
+            "100%c"
+        ],
+        "controls": [
+            {
+                "player_info@selaura_hud.player_info": {
+                    "offset": [
+                        0,
+                        -12
+                    ]
+                }
+            },
+            {
+                "hotbar@selaura_hud.hotbar": {}
+            }
+        ]
+    },
+    "player_info": {
+        "type": "stack_panel",
+        "size": [
+            180,
+            12
+        ],
+        "orientation": "horizontal",
+        "controls": [
+            {
+                "1@selaura_hud.padding": {
+                    "$s": [
+                        "fill",
+                        0
+                    ]
+                }
+            },
+            {
+                "hunger": {
+                    "type": "image",
+                    "texture": "textures/ui/Black",
+                    "alpha": 0.5,
+                    "size": [
+                        25,
+                        10
+                    ],
+                    "controls": [
+                        {
+                            "text": {
+                                "type": "label",
+                                "text": "20",
+                                "shadow": true
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hotbar": {
+        "type": "stack_panel",
+        "orientation": "horizontal",
+        "anchor_from": "bottom_middle",
+        "anchor_to": "bottom_middle",
+        "size": [
+            "100%c",
+            22
+        ],
+        "controls": [
+            {
+                "grid": {
+                    "type": "grid",
+                    "$hotbar_collection_name|default": "hotbar_items",
+                    "grid_item_template": "selaura_hud.hotbar_item",
+                    "grid_dimension_binding": "#hotbar_grid_dimensions",
+                    "collection_name": "$hotbar_collection_name",
+                    "bindings": [
+                        {
+                            "binding_name": "#hotbar_grid_dimensions",
+                            "binding_type": "global"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "hotbar_texture": {
+        "type": "image",
+        "texture": "assets/hud/hotbar_texture",
+        "size": [
+            24,
+            24
+        ],
+        "layer": 3
+    },
+    "selected_hotbar_texture": {
+        "type": "image",
+        "texture": "assets/hud/selected_hotbar_texture",
+        "size": [
+            24,
+            24
+        ],
+        "layer": 4,
+        "bindings": [
+            {
+                "binding_name": "#slot_selected",
+                "binding_name_override": "#visible",
+                "binding_type": "collection",
+                "binding_collection_name": "$hotbar_collection_name"
+            }
+        ]
+    },
+    "hotbar_item": {
+        "type": "panel",
+        "layer": 1,
+        "size": [
+            22,
+            24
+        ],
+        "anchor_to": "top_left",
+        "anchor_from": "top_left",
+        "controls": [
+            {
+                "selected_hotbar_texture@selaura_hud.selected_hotbar_texture": {}
+            },
+            {
+                "hotbar_parent": {
+                    "type": "panel",
+                    "size": [
+                        18,
+                        18
+                    ],
+                    "controls": [
+                        {
+                            "hotbar_texture@selaura_hud.hotbar_texture": {}
+                        },
+                        {
+                            "item_icon@common.item_renderer": {
+                                "size": [
+                                    16,
+                                    16
+                                ],
+                                "layer": 5,
+                                "$item_collection_name": "$hotbar_collection_name",
+                                "property_bag": {
+                                    "force_update": true
+                                }
+                            }
+                        },
+                        {
+                            "item_count@common.stack_count_label": {
+                                "layer": 4,
+                                "$item_collection_name": "$hotbar_collection_name",
+                                "$stack_count_collection_name": "$hotbar_collection_name",
+                                "bindings": [
+                                    {
+                                        "binding_name": "#inventory_stack_count",
+                                        "binding_type": "collection",
+                                        "binding_collection_name": "$stack_count_collection_name"
+                                    },
+                                    {
+                                        "binding_name": "#stack_count_visible",
+                                        "binding_name_override": "#visible",
+                                        "binding_type": "collection",
+                                        "binding_collection_name": "$stack_count_collection_name"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "hotbar_hint@edu_common.hotbar_hint": {}
+                        },
+                        {
+                            "item_dura@hud.item_durability": {
+                                "layer": 5
+                            }
+                        },
+                        {
+                            "item_store@hud.item_storage": {
+                                "layer": 5
+                            }
+                        },
+                        {
+                            "container_item_lock_overlay@hud.container_item_lock_overlay": {
+                                "layer": 6,
+                                "size": [
+                                    16,
+                                    16
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
